@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import ScheduleFormModal from "./ScheduleFormModal";
 import styles from "./DetailCard.module.css";
+import { useState } from "react";
 
 const DetailCard = () => {
 
-  useEffect(() => {
-    //Nesse useEffect, você vai fazer um fetch na api passando o 
-    //id do dentista que está vindo do react-router e carregar os dados em algum estado
-  }, []);
+  const [dentistData, setDentistData] = useState("");
+
   return (
     //As instruções que estão com {''} precisam ser 
     //substituídas com as informações que vem da api

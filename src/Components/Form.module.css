@@ -13,3 +13,9 @@
 .inputSpacing+.inputSpacing{
   margin: 1rem 0;
 }
+
+p {
+  font-size: 13px;
+  text-align: left;
+  color: red;
+}

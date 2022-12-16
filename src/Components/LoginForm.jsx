@@ -35,11 +35,12 @@ const LoginForm = () => {
         password: password
       }
       )
+      alert("Usuario logado com sucesso")
       navigate ("/home")
       fillUserDataState(response.data.token)
       console.log(response.data.token);
     } catch (error) {
-      alert("Erro ao fazer login")
+      alert("Erro ao fazer login, verifique suas informações novamente");     
     }
   }
 
@@ -61,6 +62,8 @@ const LoginForm = () => {
               name="login"
               required
             />
+            {user.length < 5 && user.length > 0 ? <p>Usuario deve conter no mínimo 5 caracteres</p> : null}
+            {user.length === 0 ? <p>Preencha esse campo</p> : null}
             <input
               value={password}
               onChange={(event)=>setPassword(event.target.value)}
@@ -70,6 +73,7 @@ const LoginForm = () => {
               type="password"
               required
             />
+            {password.length === 0 ? <p>Preencha esse campo</p> : null}
             <button className="btn btn-primary" type="submit">
               Send
             </button>

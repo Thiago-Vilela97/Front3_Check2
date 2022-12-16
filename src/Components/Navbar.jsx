@@ -4,6 +4,7 @@ import { ContextGlobal } from "./utils/global.context";
 import { removeTokenFromStorage } from "./utils/localStorage.service";
 import styles from "./Navbar.module.css";
 import { AuthContext } from "./utils/AuthContext";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const { theme, setDarkTheme, setLightTheme, setLogout } =
@@ -11,6 +12,15 @@ const Navbar = () => {
 
   const {login, setLogin, emptyUserData} = useContext(AuthContext)
   const isDarkMode = theme === "dark" || false;
+
+  useEffect(()=>{
+    const localStorageStatus = localStorage.getItem("token");
+    if (localStorageStatus !=null) {
+      setLogin(true)
+    } else {
+      setLogin(false)
+    }
+  },[]);
 
   const changeTheme = () => {
     if (isDarkMode) setLightTheme();
